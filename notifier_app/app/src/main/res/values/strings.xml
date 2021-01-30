@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">notifier_app</string>
+    <string name="button_send">Send</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="channel_name">testerChannel</string>
+    <string name="channel_description">Channel for testing notifications</string>
+</resources>
