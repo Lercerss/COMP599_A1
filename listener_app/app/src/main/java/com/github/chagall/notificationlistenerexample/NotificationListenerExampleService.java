@@ -59,7 +59,7 @@ public class NotificationListenerExampleService extends NotificationListenerServ
         if (activeNotifications == null || activeNotifications.length == 0) {
             return;
         }
-        String notifContent = parseContentFromNotification(activeNotifications[0]);
+        String notifContent = parseContentFromNotification(activeNotifications[0].getNotification());
 
         Intent intent = new Intent(INTENT_KEY);
         intent.putExtra(NOTIFICATION_CONTENT_KEY, notifContent);
@@ -72,19 +72,18 @@ public class NotificationListenerExampleService extends NotificationListenerServ
      *
      * Attempts to do so by extracting `extras` inserted by the NotificationBuilder built-in.
      * In the future, we could also directly inspect the Views in the `Notification#contentView`
-     * @param sbn
+     * @param notif Notification to parse content from
      * @return Concatenated text content of the notification
      */
-    private String parseContentFromNotification(StatusBarNotification sbn) {
+    private String parseContentFromNotification(Notification notif) {
         ExtrasStringBuilder result = new ExtrasStringBuilder();
 
-        Notification notif = sbn.getNotification();
         String title = notif.extras.getString(Notification.EXTRA_TITLE);
         String titleBig = notif.extras.getString(Notification.EXTRA_TITLE_BIG);
         String[] people = notif.extras.getStringArray(Notification.EXTRA_PEOPLE);
+        CharSequence bigText = notif.extras.getCharSequence(Notification.EXTRA_BIG_TEXT);
         CharSequence text = notif.extras.getCharSequence(Notification.EXTRA_TEXT);
         CharSequence[] textLines = notif.extras.getCharSequenceArray(Notification.EXTRA_TEXT_LINES);
-        CharSequence bigText = notif.extras.getCharSequence(Notification.EXTRA_BIG_TEXT);
         CharSequence subText = notif.extras.getCharSequence(Notification.EXTRA_SUB_TEXT);
         CharSequence infoText = notif.extras.getCharSequence(Notification.EXTRA_INFO_TEXT);
         CharSequence summaryText = notif.extras.getCharSequence(Notification.EXTRA_SUMMARY_TEXT);
