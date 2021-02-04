@@ -1,7 +1,7 @@
 <resources>
 
-    <string name="app_name">NotificationListenerExample</string>
-    <string name="service_label">NotificationListenerExampleService</string>
+    <string name="app_name">listener_app</string>
+    <string name="service_label">listener_app_service</string>
     <string name="image_change_explanaton">The text bellow will change when a Notification is intercepted</string>
 
     <!-- Placeholder string for if the image doesn't load -->
