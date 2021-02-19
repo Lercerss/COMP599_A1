@@ -6,6 +6,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         createNotificationChannel();
 
         Button buttonShowNotification = findViewById(R.id.button);
+        Button detectionButton = findViewById(R.id.detection_button);
         EditText editText = (EditText) findViewById(R.id.editText);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "testChannel")
@@ -38,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
             String message = getMessage(v);
             builder.setContentText(message);
             notificationManager.notify(100, builder.build());
+        });
+        detectionButton.setOnClickListener( v -> {
+            Intent intent = new Intent(this, ListenerDetectionActivity.class);
+            startActivity(intent);
         });
     }
 

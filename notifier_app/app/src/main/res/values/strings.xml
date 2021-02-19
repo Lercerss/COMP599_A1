@@ -4,4 +4,6 @@
     <string name="edit_message">Enter a message</string>
     <string name="channel_name">testerChannel</string>
     <string name="channel_description">Channel for testing notifications</string>
+    <string name="check_listeners">Check for notification listeners</string>
+    <string name="go_to_settings">Settings</string>
 </resources>
