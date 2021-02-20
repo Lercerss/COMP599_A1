@@ -52,6 +52,10 @@ public class ListenerDetectionActivity extends AppCompatActivity {
         recycler.setAdapter(adapter);
     }
 
+    /**
+     * Detect applications with notification access
+     * @return List of package names granted notification access
+     */
     private List<String> detectAllListeners() {
         List<String> detectedPackages = new ArrayList<>();
         final String flat = Settings.Secure.getString(getContentResolver(),
@@ -118,8 +122,8 @@ public class ListenerDetectionActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            String pi = packages.get(position);
-            holder.populate(pi);
+            String packageName = packages.get(position);
+            holder.populate(packageName);
         }
 
         @Override
@@ -127,6 +131,4 @@ public class ListenerDetectionActivity extends AppCompatActivity {
             return packages.size();
         }
     }
-
-    ;
 }

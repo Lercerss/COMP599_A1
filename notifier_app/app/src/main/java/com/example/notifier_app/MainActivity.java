@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "com.example.notifier_app.MESSAGE";
     private static final String CHANNEL_ID = "testChannel";
 
     @Override
@@ -25,12 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonShowNotification = findViewById(R.id.button);
         Button detectionButton = findViewById(R.id.detection_button);
-        EditText editText = (EditText) findViewById(R.id.editText);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "testChannel")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_baseline_child_care_24)
                 .setContentTitle("New Notification")
-                .setContentText("Message: " + editText.getText().toString())
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);

@@ -39,8 +39,8 @@ public class NotificationListenerExampleService extends NotificationListenerServ
     }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
+    public void onListenerConnected() {
+        super.onListenerConnected();
         publishContentForNotification();
     }
 
@@ -54,12 +54,16 @@ public class NotificationListenerExampleService extends NotificationListenerServ
         publishContentForNotification();
     }
 
+    /**
+     * Select the most recent notification and publish its content to the MainActivity for display
+     */
     private void publishContentForNotification() {
         StatusBarNotification[] activeNotifications = getActiveNotifications();
         if (activeNotifications == null || activeNotifications.length == 0) {
             return;
         }
-        String notifContent = parseContentFromNotification(activeNotifications[0].getNotification());
+        Notification lastPostedNotification = activeNotifications[0].getNotification();
+        String notifContent = parseContentFromNotification(lastPostedNotification);
 
         Intent intent = new Intent(INTENT_KEY);
         intent.putExtra(NOTIFICATION_CONTENT_KEY, notifContent);
